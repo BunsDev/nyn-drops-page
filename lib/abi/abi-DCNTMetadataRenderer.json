@@ -1,0 +1,1670 @@
+[
+    {
+      "type": "constructor",
+      "name": "",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "_sharedNFTLogic",
+          "internalType": "contract ISharedNFTLogic"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "error",
+      "name": "Access_OnlyAdmin",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "type": "event",
+      "name": "ArtistUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "newArtist",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "ArtworkUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "artworkUri",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkMimeType",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkNft",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "AudioQualitativeUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "license",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "externalUrl",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "isrc",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "genre",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "AudioQuantitativeUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "key",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "uint256",
+          "name": "bpm",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "type": "uint256",
+          "name": "duration",
+          "indexed": false,
+          "internalType": "uint256"
+        },
+        {
+          "type": "string",
+          "name": "audioMimeType",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "uint256",
+          "name": "trackNumber",
+          "indexed": false,
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "CreditsUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "tuple[]",
+          "name": "credits",
+          "components": [
+            {
+              "type": "string",
+              "name": "name",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "collaboratorType",
+              "internalType": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOnChainMetadata.Credit[]"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "DescriptionUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "newDescription",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "EditionInitialized",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "imageURI",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "animationURI",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "LosslessAudioUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "losslessAudio",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "LyricsUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "lyrics",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "lyricsNft",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "MediaURIsUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "imageURI",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "animationURI",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "ProjectArtworkUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "artworkUri",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkMimeType",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkNft",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "ProjectPublishingDataUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "title",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "recordLabel",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "publisher",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "locationCreated",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "releaseDate",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "projectType",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "upc",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "PublishingDataUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "title",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "description",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "recordLabel",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "publisher",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "locationCreated",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "releaseDate",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "SongUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "tuple",
+          "name": "songMetadata",
+          "components": [
+            {
+              "type": "tuple",
+              "name": "song",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "losslessAudio",
+                      "type": "string"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "artistName",
+                          "type": "string"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "string",
+                              "name": "key",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "bpm",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "duration",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "audioMimeType",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "trackNumber",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct IOnChainMetadata.AudioQuantitative",
+                          "name": "audioQuantitative",
+                          "type": "tuple"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "string",
+                              "name": "license",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "externalUrl",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "isrc",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "genre",
+                              "type": "string"
+                            }
+                          ],
+                          "internalType": "struct IOnChainMetadata.AudioQualitative",
+                          "name": "audioQualitative",
+                          "type": "tuple"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.SongDetails",
+                      "name": "songDetails",
+                      "type": "tuple"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "lyrics",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "lyricsNft",
+                          "type": "string"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.Lyrics",
+                      "name": "lyrics",
+                      "type": "tuple"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Audio",
+                  "name": "audio",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "artworkUri",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkMimeType",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkNft",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Artwork",
+                  "name": "artwork",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "artworkUri",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkMimeType",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkNft",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Artwork",
+                  "name": "visualizer",
+                  "type": "tuple"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.SongContent"
+            },
+            {
+              "type": "tuple",
+              "name": "songPublishingData",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "title",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "recordLabel",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "publisher",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "locationCreated",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "releaseDate",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.PublishingData"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOnChainMetadata.SongMetadata"
+        },
+        {
+          "type": "tuple",
+          "name": "projectMetadata",
+          "components": [
+            {
+              "type": "tuple",
+              "name": "publishingData",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "title",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "recordLabel",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "publisher",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "locationCreated",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "releaseDate",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.PublishingData"
+            },
+            {
+              "type": "tuple",
+              "name": "artwork",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "artworkUri",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkMimeType",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkNft",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.Artwork"
+            },
+            {
+              "type": "string",
+              "name": "projectType",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "upc",
+              "internalType": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOnChainMetadata.ProjectMetadata"
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "indexed": false,
+          "internalType": "string[]"
+        },
+        {
+          "type": "tuple[]",
+          "name": "credits",
+          "components": [
+            {
+              "type": "string",
+              "name": "name",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "collaboratorType",
+              "internalType": "string"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IOnChainMetadata.Credit[]"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "TagsUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "indexed": false,
+          "internalType": "string[]"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "event",
+      "name": "VisualizerUpdated",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "indexed": true,
+          "internalType": "address"
+        },
+        {
+          "type": "address",
+          "name": "sender",
+          "indexed": false,
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "artworkUri",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkMimeType",
+          "indexed": false,
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "artworkNft",
+          "indexed": false,
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "anonymous": false
+    },
+    {
+      "type": "function",
+      "name": "bulkUpdate",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        },
+        {
+          "type": "tuple",
+          "name": "_songMetadata",
+          "components": [
+            {
+              "type": "tuple",
+              "name": "song",
+              "components": [
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "losslessAudio",
+                      "type": "string"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "artistName",
+                          "type": "string"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "string",
+                              "name": "key",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "bpm",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "duration",
+                              "type": "uint256"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "audioMimeType",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "uint256",
+                              "name": "trackNumber",
+                              "type": "uint256"
+                            }
+                          ],
+                          "internalType": "struct IOnChainMetadata.AudioQuantitative",
+                          "name": "audioQuantitative",
+                          "type": "tuple"
+                        },
+                        {
+                          "components": [
+                            {
+                              "internalType": "string",
+                              "name": "license",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "externalUrl",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "isrc",
+                              "type": "string"
+                            },
+                            {
+                              "internalType": "string",
+                              "name": "genre",
+                              "type": "string"
+                            }
+                          ],
+                          "internalType": "struct IOnChainMetadata.AudioQualitative",
+                          "name": "audioQualitative",
+                          "type": "tuple"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.SongDetails",
+                      "name": "songDetails",
+                      "type": "tuple"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "lyrics",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "lyricsNft",
+                          "type": "string"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.Lyrics",
+                      "name": "lyrics",
+                      "type": "tuple"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Audio",
+                  "name": "audio",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "artworkUri",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkMimeType",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkNft",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Artwork",
+                  "name": "artwork",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "artworkUri",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkMimeType",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "artworkNft",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Artwork",
+                  "name": "visualizer",
+                  "type": "tuple"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.SongContent"
+            },
+            {
+              "type": "tuple",
+              "name": "songPublishingData",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "title",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "recordLabel",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "publisher",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "locationCreated",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "releaseDate",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.PublishingData"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.SongMetadata"
+        },
+        {
+          "type": "tuple",
+          "name": "_projectMetadata",
+          "components": [
+            {
+              "type": "tuple",
+              "name": "publishingData",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "title",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "recordLabel",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "publisher",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "locationCreated",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "releaseDate",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.PublishingData"
+            },
+            {
+              "type": "tuple",
+              "name": "artwork",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "artworkUri",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkMimeType",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkNft",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.Artwork"
+            },
+            {
+              "type": "string",
+              "name": "projectType",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "upc",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.ProjectMetadata"
+        },
+        {
+          "type": "string[]",
+          "name": "_tags",
+          "internalType": "string[]"
+        },
+        {
+          "type": "tuple[]",
+          "name": "_credits",
+          "components": [
+            {
+              "type": "string",
+              "name": "name",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "collaboratorType",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.Credit[]"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "contractURI",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "string",
+          "name": "",
+          "internalType": "string"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "initializeWithData",
+      "inputs": [
+        {
+          "type": "bytes",
+          "name": "data",
+          "internalType": "bytes"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "projectMetadatas",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "tuple",
+          "name": "publishingData",
+          "components": [
+            {
+              "type": "string",
+              "name": "title",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "description",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "recordLabel",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "publisher",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "locationCreated",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "releaseDate",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.PublishingData"
+        },
+        {
+          "type": "tuple",
+          "name": "artwork",
+          "components": [
+            {
+              "type": "string",
+              "name": "artworkUri",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "artworkMimeType",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "artworkNft",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.Artwork"
+        },
+        {
+          "type": "string",
+          "name": "projectType",
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "upc",
+          "internalType": "string"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "sharedNFTLogic",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "address",
+          "name": "",
+          "internalType": "contract ISharedNFTLogic"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "songMetadatas",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "tuple",
+          "name": "song",
+          "components": [
+            {
+              "type": "tuple",
+              "name": "audio",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "losslessAudio",
+                  "type": "string"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "artistName",
+                      "type": "string"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "key",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "bpm",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "duration",
+                          "type": "uint256"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "audioMimeType",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "uint256",
+                          "name": "trackNumber",
+                          "type": "uint256"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.AudioQuantitative",
+                      "name": "audioQuantitative",
+                      "type": "tuple"
+                    },
+                    {
+                      "components": [
+                        {
+                          "internalType": "string",
+                          "name": "license",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "externalUrl",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "isrc",
+                          "type": "string"
+                        },
+                        {
+                          "internalType": "string",
+                          "name": "genre",
+                          "type": "string"
+                        }
+                      ],
+                      "internalType": "struct IOnChainMetadata.AudioQualitative",
+                      "name": "audioQualitative",
+                      "type": "tuple"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.SongDetails",
+                  "name": "songDetails",
+                  "type": "tuple"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "string",
+                      "name": "lyrics",
+                      "type": "string"
+                    },
+                    {
+                      "internalType": "string",
+                      "name": "lyricsNft",
+                      "type": "string"
+                    }
+                  ],
+                  "internalType": "struct IOnChainMetadata.Lyrics",
+                  "name": "lyrics",
+                  "type": "tuple"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.Audio"
+            },
+            {
+              "type": "tuple",
+              "name": "artwork",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "artworkUri",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkMimeType",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkNft",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.Artwork"
+            },
+            {
+              "type": "tuple",
+              "name": "visualizer",
+              "components": [
+                {
+                  "internalType": "string",
+                  "name": "artworkUri",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkMimeType",
+                  "type": "string"
+                },
+                {
+                  "internalType": "string",
+                  "name": "artworkNft",
+                  "type": "string"
+                }
+              ],
+              "internalType": "struct IOnChainMetadata.Artwork"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.SongContent"
+        },
+        {
+          "type": "tuple",
+          "name": "songPublishingData",
+          "components": [
+            {
+              "type": "string",
+              "name": "title",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "description",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "recordLabel",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "publisher",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "locationCreated",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "releaseDate",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.PublishingData"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "tokenURI",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tokenId",
+          "internalType": "uint256"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "name": "",
+          "internalType": "string"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "tokenURITarget",
+      "inputs": [
+        {
+          "type": "uint256",
+          "name": "tokenId",
+          "internalType": "uint256"
+        },
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "string",
+          "name": "",
+          "internalType": "string"
+        }
+      ],
+      "stateMutability": "view"
+    },
+    {
+      "type": "function",
+      "name": "updateCredits",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        },
+        {
+          "type": "tuple[]",
+          "name": "_credits",
+          "components": [
+            {
+              "type": "string",
+              "name": "name",
+              "internalType": "string"
+            },
+            {
+              "type": "string",
+              "name": "collaboratorType",
+              "internalType": "string"
+            }
+          ],
+          "internalType": "struct IOnChainMetadata.Credit[]"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateDescription",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "newDescription",
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateMediaURIs",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        },
+        {
+          "type": "string",
+          "name": "imageURI",
+          "internalType": "string"
+        },
+        {
+          "type": "string",
+          "name": "animationURI",
+          "internalType": "string"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    },
+    {
+      "type": "function",
+      "name": "updateTags",
+      "inputs": [
+        {
+          "type": "address",
+          "name": "target",
+          "internalType": "address"
+        },
+        {
+          "type": "string[]",
+          "name": "tags",
+          "internalType": "string[]"
+        }
+      ],
+      "outputs": [],
+      "stateMutability": "nonpayable"
+    }
+  ]

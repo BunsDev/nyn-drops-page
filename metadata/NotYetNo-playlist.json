@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1",
+  "coverArtUrl": "https://maroon-quickest-ocelot-736.mypinata.cloud/ipfs/QmXyTtQGEqSUvcHDabfca3guaT9rZp6bX4Tq38DNFWFPuh",
+  "title": "Not yet, no?",
+  "artist": "A web3 compilation",
+  "chain": "",
+  "contractAddress": "",
+  "tokenId": "",
+  "tokenType": "ERC-721",
+  "hideBranding": true,
+  "items": [
+    {
+      "url": "https://nftstorage.link/ipfs/bafybeican3jcuh2tuamznzkvzsrhcmecsdhtbifswpqsamh5gjwepuesra/STATIC RES - UP AT NIGHT 2.m4a",
+      "kind": "audio",
+      "artist": "Static Res",
+      "title": "Dont get too close"
+    },
+    {
+      "url": "https://nftstorage.link/ipfs/bafybeih2wgihotmnicypl3nlynm3joty776iqkajj4hrb2ln55gonz2v44/Rebel 2 the bone.mp3",
+      "kind": "audio",
+      "artist": "Tobilla",
+      "title": "Rebel 2 the bone"
+    },
+    {
+      "url": "https://nftstorage.link/ipfs/bafybeig4ylmyd67mzvq4lb37hl74yfwx3sdzdkjptd5yt7cgwb2pv2dyxm/Dreamer 2000 - Nook.mpeg",
+      "kind": "audio",
+      "artist": "WhoKares",
+      "title": "Dreamer 2000 "
+    },
+    {
+      "url": "https://nftstorage.link/ipfs/bafybeifwzoc6ootedpdnew75clewqthjqy3noetucozabcirnodz4eb7jm/TrynaGetAReadOnYa v1.2 2.09.23 .mp3",
+      "kind": "audio",
+      "artist": "Kahlil Newton · WhoKares",
+      "title": "ReadOnYa (DEMO)"
+    },
+    {
+      "url": "https://nftstorage.link/ipfs/bafybeib5asoltpfivz4ojfgydfxi25stkw5ovik7xii3mrfr5jrp6cb5p4/Bus2DC V3 2.10.23.mp3",
+      "kind": "audio",
+      "artist": "Tobilla · Kahlil Newton · Static Res · WhoKares",
+      "title": "Bus2DC (DEMO)"
+    }
+  ]
+}
